@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+   apache:
+     image: jsvcapache:1.0
+     volumes:
+       - apache-data:/var/lib/mysql
+      ports:
+       - "3000:80"
+     networks:
+       - redexamen
+     deploy:
+       resources:
+         limits:
+           memory: 50Mb
+           cpus: '0'
+   php:
+     image: jsvcapache:1.0
+     ports:
+       - "4000:80"
+     networks:
+       - redexamen
+     deploy:
+       resources:
+         limits:
+           memory: 120Mb
+           cpus: '0'
+volumes:
+    apache-data:
+    php-data:
+networks: 
+    redexamen:
